@@ -1,0 +1,337 @@
+app:
+  description: '1'
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: test batch file down
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/md_exporter:1.8.0@aa15ca94651e608fa2defef440cc5bbd22884053168bd2d41d132d5d1b021129
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 1024
+        batch_count_limit: 5
+        file_size_limit: 1024
+        image_file_size_limit: 1024
+        video_file_size_limit: 1024
+        workflow_file_upload_limit: 1024
+      image:
+        enabled: false
+      number_limits: 3
+    opening_statement: ''
+    related_retrieve_reference_information:
+      enabled: false
+    retriever_resource:
+      enabled: true
+    scheduled_execution:
+      default_question: 1阿1饿啊的
+      enabled: false
+      execution_hour: 0
+      execution_min: 0
+      frequency: weekly
+      timezone: Asia/Shanghai
+      weekday: 1
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+    version_control:
+      enabled: true
+      repo_path: https://github.com/MycomeC/dify_flow_version_control.git
+      token: Sensitive data has been hidden
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: code
+      id: 1756195599784-source-1756200349240-target
+      source: '1756195599784'
+      sourceHandle: source
+      target: '1756200349240'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: iteration
+      id: 1756200349240-source-1756200392882-target
+      source: '1756200349240'
+      sourceHandle: source
+      target: '1756200392882'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1756200392882'
+        sourceType: iteration-start
+        targetType: tool
+      id: 1756200392882start-source-1756200405026-target
+      source: 1756200392882start
+      sourceHandle: source
+      target: '1756200405026'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: iteration
+        targetType: end
+      id: 1756200392882-source-1756195628504-target
+      source: '1756200392882'
+      sourceHandle: source
+      target: '1756195628504'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1756195599784'
+      position:
+        x: 74.21092305023848
+        y: 374
+      positionAbsolute:
+        x: 74.21092305023848
+        y: 374
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1756200392882'
+          - output
+          variable: files
+        selected: false
+        title: 结束
+        type: end
+      height: 89
+      id: '1756195628504'
+      position:
+        x: 1183.646314865832
+        y: 374
+      positionAbsolute:
+        x: 1183.646314865832
+        y: 374
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\ndef main() -> dict:\n    return {\n        \"result\": [\"arg1 +\
+          \ arg2\",\"sdfsdfdsfsd\",\"中文也行吗\"],\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: 代码执行
+        type: code
+        variables: []
+      height: 53
+      id: '1756200349240'
+      position:
+        x: 383.25331014910023
+        y: 374
+      positionAbsolute:
+        x: 383.25331014910023
+        y: 374
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        is_parallel: false
+        iterator_selector:
+        - '1756200349240'
+        - result
+        output_selector:
+        - '1756200405026'
+        - files
+        output_type: array[file]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1756200392882start
+        title: 迭代
+        type: iteration
+        width: 388
+      height: 147
+      id: '1756200392882'
+      position:
+        x: 688
+        y: 374
+      positionAbsolute:
+        x: 688
+        y: 374
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 388
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1756200392882start
+      parentId: '1756200392882'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 712
+        y: 442
+      selectable: false
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        is_team_authorization: true
+        iteration_id: '1756200392882'
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          label:
+            en_US: Markdown text
+            ja_JP: Markdown text
+            pt_BR: Markdown text
+            zh_Hans: Markdown格式文本
+          llm_description: ''
+          max: null
+          min: null
+          name: md_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Filename of the output file
+            ja_JP: Filename of the output file
+            pt_BR: Filename of the output file
+            zh_Hans: 输出文件名
+          label:
+            en_US: Filename of the output file
+            ja_JP: Filename of the output file
+            pt_BR: Filename of the output file
+            zh_Hans: 输出文件名
+          llm_description: ''
+          max: null
+          min: null
+          name: output_filename
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          md_text: ''
+          output_filename: ''
+        provider_id: bowenliang123/md_exporter/md_exporter
+        provider_name: bowenliang123/md_exporter/md_exporter
+        provider_type: builtin
+        selected: false
+        title: Markdown 转 DOCX 文件
+        tool_configurations: {}
+        tool_description: 将 Markdown 转换为 DOCX 文件的工具
+        tool_label: Markdown 转 DOCX 文件
+        tool_name: md_to_docx
+        tool_parameters:
+          md_text:
+            type: mixed
+            value: '{{#1756200392882.item#}}'
+          output_filename:
+            type: mixed
+            value: '{{#1756200392882.item#}}'
+        type: tool
+      height: 53
+      id: '1756200405026'
+      parentId: '1756200392882'
+      position:
+        x: 128
+        y: 68
+      positionAbsolute:
+        x: 816
+        y: 442
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    viewport:
+      x: 28.795381283170684
+      y: -6.0568298769291005
+      zoom: 0.6090643918239731
